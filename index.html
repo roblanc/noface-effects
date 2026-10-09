@@ -14,20 +14,53 @@ article p{margin:6px 12px;color:var(--mute)}details{margin:0 12px}summary{cursor
 pre{font-size:12px;white-space:pre-wrap;color:var(--mute)}code{display:block;margin:6px 12px 12px;font-size:12px;color:#c9c6bf;word-break:break-all}
 header code,.note code{display:inline;margin:0}.note{margin:8px 32px;padding:10px 14px;border:1px solid var(--warn);border-radius:8px;color:#e3a07f}
 </style></head><body><header><h1>NofaceChan effects</h1>
-<p>Built 2026-10-09 13:29 UTC from anime_motion.py (2026-10-09 13:02) · 12 kit effects · rebuild: <code style="display:inline">python build.py</code> in /mnt/media/bob/effects-dashboard</p></header>
-<p class="note">Effects marked <b>partial</b> use DroneMill helpers (particles, dust, lights, rain) that only root can read. Copy living_still.py to <code>ls/living_still_real.py</code> and rebuild to see them in full.</p><section><h2>New: five effects to try instead of dolly_zoom</h2><p class="sub">The whole picture moves as one rigid image, so characters can never warp or &quot;decompose&quot;. Depth only decides how much blur or fog an area gets. Not in the videos yet: pick the ones you like.</p><div class="g"><article><video muted loop playsinline preload="none" poster="posters/ken_burns_pan-85cea1bead.jpg" src="clips/ken_burns_pan-85cea1bead.mp4"></video><div class="t"><h3>ken_burns_pan</h3><span class="b ok">new</span><span class="b ok">no warping</span></div><p>Slow diagonal glide with a gentle push: the classic documentary move. Calm establishing shots.</p><code>python fx/extra.py ken_burns_pan &lt;image&gt; out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/depth_focus-e5f3e945a0.jpg" src="clips/depth_focus-e5f3e945a0.mp4"></video><div class="t"><h3>depth_focus</h3><span class="b ok">new</span><span class="b ok">no warping</span></div><p>Slow push while the background melts into soft bokeh and dims; near characters stay sharp. &quot;This is the person that matters.&quot;</p><code>python fx/extra.py depth_focus &lt;image&gt; out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/handheld_push-2bd8f278f2.jpg" src="clips/handheld_push-2bd8f278f2.mp4"></video><div class="t"><h3>handheld_push</h3><span class="b ok">new</span><span class="b ok">no warping</span></div><p>Slow push-in with a smooth, natural handheld sway. Tension, &quot;we are there&quot;.</p><code>python fx/extra.py handheld_push &lt;image&gt; out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/crash_zoom-560df7cb70.jpg" src="clips/crash_zoom-560df7cb70.mp4"></video><div class="t"><h3>crash_zoom</h3><span class="b ok">new</span><span class="b ok">no warping</span></div><p>Fast punch-in on the subject with motion blur, then a slow creep. Reveals and verdicts.</p><code>python fx/extra.py crash_zoom &lt;image&gt; out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/fog_drift-9279396993.jpg" src="clips/fog_drift-9279396993.mp4"></video><div class="t"><h3>fog_drift</h3><span class="b ok">new</span><span class="b ok">no warping</span></div><p>Mist drifts through the scene, thicker far away, a thin layer in front, soft light flicker. Mood.</p><code>python fx/extra.py fog_drift &lt;image&gt; out.mp4 6</code></article></div></section><section><h2>On NofaceChan&#x27;s channel list</h2><p class="sub">The video renderer picks only from these (CHANNEL_MOTIONS).</p><div class="g"><article><video muted loop playsinline preload="none" poster="posters/dolly_zoom-bee3814667.jpg" src="clips/dolly_zoom-bee3814667.mp4"></video><div class="t"><h3>dolly_zoom</h3><span class="b ok">on the channel list</span><span class="b star">preferred</span></div><p>the channel&#x27;s preferred move: the subject holds while the room stretches away 2026-10-09: layered (characters cut out from the depth map stay rigid; only the background stretches). The old per-pixel warp made characters &quot;decompose&quot;; &quot;layered&quot;: False brings it back.</p><details><summary>settings</summary><pre>{
+<p>Built 2026-10-09 14:31 UTC from anime_motion.py (2026-10-09 14:25) · 17 kit effects · rebuild: <code style="display:inline">python build.py</code> in /mnt/media/bob/effects-dashboard</p></header>
+<p class="note">Effects marked <b>partial</b> use DroneMill helpers (particles, dust, lights, rain) that only root can read. Copy living_still.py to <code>ls/living_still_real.py</code> and rebuild to see them in full.</p><section><h2>On NofaceChan&#x27;s channel list</h2><p class="sub">The video renderer picks only from these (CHANNEL_MOTIONS).</p><div class="g"><article><video muted loop playsinline preload="none" poster="posters/depth_focus-9049fe2253.jpg" src="clips/depth_focus-9049fe2253.mp4"></video><div class="t"><h3>depth_focus</h3><span class="b ok">on the channel list</span><span class="b star">preferred</span></div><p>&quot;this is the person that matters&quot;: background melts into bokeh and dims, the subject stays sharp</p><details><summary>settings</summary><pre>{
  &quot;depth&quot;: true,
- &quot;dolly&quot;: {
-  &quot;amount&quot;: 0.3,
-  &quot;layered&quot;: true
- },
+ &quot;extra&quot;: &quot;depth_focus&quot;,
  &quot;finish&quot;: {
   &quot;grain&quot;: 0.012,
   &quot;vignette&quot;: 0.3
  }
 }
 
-sample: scene-01-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; dolly_zoom out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/lantern_parallax-9a8b8c5d50.jpg" src="clips/lantern_parallax-9a8b8c5d50.mp4"></video><div class="t"><h3>lantern_parallax</h3><span class="b ok">on the channel list</span><span class="b warn">partial here: lights, particles</span></div><p>establishing shots: depth dolly in, flickering lanterns, embers drifting up</p><details><summary>settings</summary><pre>{
+sample: scene-05-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; depth_focus out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/crash_zoom-6b811076f9.jpg" src="clips/crash_zoom-6b811076f9.mp4"></video><div class="t"><h3>crash_zoom</h3><span class="b ok">on the channel list</span></div><p>reveals and verdicts: fast punch-in with motion blur, then a slow creep</p><details><summary>settings</summary><pre>{
+ &quot;depth&quot;: false,
+ &quot;extra&quot;: &quot;crash_zoom&quot;,
+ &quot;finish&quot;: {
+  &quot;grain&quot;: 0.012,
+  &quot;vignette&quot;: 0.3
+ }
+}
+
+sample: scene-09-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; crash_zoom out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/handheld_push-9207356f6a.jpg" src="clips/handheld_push-9207356f6a.mp4"></video><div class="t"><h3>handheld_push</h3><span class="b ok">on the channel list</span></div><p>tension, &quot;we are there&quot;: slow push with a smooth handheld sway</p><details><summary>settings</summary><pre>{
+ &quot;depth&quot;: false,
+ &quot;extra&quot;: &quot;handheld_push&quot;,
+ &quot;finish&quot;: {
+  &quot;grain&quot;: 0.012,
+  &quot;vignette&quot;: 0.3
+ }
+}
+
+sample: scene-06-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; handheld_push out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/ken_burns_pan-9e0762277d.jpg" src="clips/ken_burns_pan-9e0762277d.mp4"></video><div class="t"><h3>ken_burns_pan</h3><span class="b ok">on the channel list</span></div><p>2026-10-09 rigid moves (fx_extra.py): the whole picture moves as one image, so characters never warp; depth only weights blur / fog. They replace dolly_zoom on the channel list. calm establishing shots: slow diagonal glide with a gentle push</p><details><summary>settings</summary><pre>{
+ &quot;depth&quot;: false,
+ &quot;extra&quot;: &quot;ken_burns_pan&quot;,
+ &quot;finish&quot;: {
+  &quot;grain&quot;: 0.012,
+  &quot;vignette&quot;: 0.3
+ }
+}
+
+sample: scene-01-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; ken_burns_pan out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/fog_drift-bc33dcc66f.jpg" src="clips/fog_drift-bc33dcc66f.mp4"></video><div class="t"><h3>fog_drift</h3><span class="b ok">on the channel list</span></div><p>mood, night, mystery: mist drifting through the scene, thicker far away</p><details><summary>settings</summary><pre>{
+ &quot;depth&quot;: true,
+ &quot;extra&quot;: &quot;fog_drift&quot;,
+ &quot;finish&quot;: {
+  &quot;grain&quot;: 0.012,
+  &quot;vignette&quot;: 0.3
+ }
+}
+
+sample: scene-04-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; fog_drift out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/lantern_parallax-dc05a05a67.jpg" src="clips/lantern_parallax-dc05a05a67.mp4"></video><div class="t"><h3>lantern_parallax</h3><span class="b ok">on the channel list</span><span class="b warn">partial here: lights, particles</span></div><p>establishing shots: depth dolly in, flickering lanterns, embers drifting up</p><details><summary>settings</summary><pre>{
  &quot;depth&quot;: true,
  &quot;parallax&quot;: {
   &quot;zoom&quot;: 0.1,
@@ -67,7 +100,7 @@ sample: scene-01-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;
  }
 }
 
-sample: scene-04-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; lantern_parallax out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/kira_moment-de9b0a0a4b.jpg" src="clips/kira_moment-de9b0a0a4b.mp4"></video><div class="t"><h3>kira_moment</h3><span class="b ok">on the channel list</span><span class="b warn">partial here: lights</span></div><p>Death Note beats: slow push, two red pulses with chromatic split</p><details><summary>settings</summary><pre>{
+sample: scene-04-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; lantern_parallax out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/kira_moment-9b987c86f1.jpg" src="clips/kira_moment-9b987c86f1.mp4"></video><div class="t"><h3>kira_moment</h3><span class="b ok">on the channel list</span><span class="b warn">partial here: lights</span></div><p>Death Note beats: slow push, two red pulses with chromatic split</p><details><summary>settings</summary><pre>{
  &quot;depth&quot;: true,
  &quot;parallax&quot;: {
   &quot;zoom&quot;: 0.08
@@ -85,7 +118,7 @@ sample: scene-04-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;
  }
 }
 
-sample: scene-03-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; kira_moment out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/vhs_flashback-ffa62f7afa.jpg" src="clips/vhs_flashback-ffa62f7afa.mp4"></video><div class="t"><h3>vhs_flashback</h3><span class="b ok">on the channel list</span></div><p>flashbacks and &quot;in canon&quot; recaps</p><details><summary>settings</summary><pre>{
+sample: scene-03-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; kira_moment out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/vhs_flashback-eb2e682b16.jpg" src="clips/vhs_flashback-eb2e682b16.mp4"></video><div class="t"><h3>vhs_flashback</h3><span class="b ok">on the channel list</span></div><p>flashbacks and &quot;in canon&quot; recaps</p><details><summary>settings</summary><pre>{
  &quot;depth&quot;: false,
  &quot;camera&quot;: {
   &quot;zoom&quot;: 1.05,
@@ -99,7 +132,7 @@ sample: scene-03-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;
  }
 }
 
-sample: scene-02-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; vhs_flashback out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/portrait_breath-2afcc3d061.jpg" src="clips/portrait_breath-2afcc3d061.mp4"></video><div class="t"><h3>portrait_breath</h3><span class="b ok">on the channel list</span><span class="b warn">partial here: dust_motes, lights</span></div><p>close portraits: tiny depth breathing, dust in the light</p><details><summary>settings</summary><pre>{
+sample: scene-02-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; vhs_flashback out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/portrait_breath-1ac6a5837c.jpg" src="clips/portrait_breath-1ac6a5837c.mp4"></video><div class="t"><h3>portrait_breath</h3><span class="b ok">on the channel list</span><span class="b warn">partial here: dust_motes, lights</span></div><p>close portraits: tiny depth breathing, dust in the light</p><details><summary>settings</summary><pre>{
  &quot;depth&quot;: true,
  &quot;parallax&quot;: {
   &quot;zoom&quot;: 0.035,
@@ -124,7 +157,7 @@ sample: scene-02-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;
  }
 }
 
-sample: scene-05-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; portrait_breath out.mp4 6</code></article></div></section><section><h2>Other effects in the kit</h2><p class="sub">Available for one-off use; not picked by the renderer.</p><div class="g"><article><video muted loop playsinline preload="none" poster="posters/rack_focus-b84a28249b.jpg" src="clips/rack_focus-b84a28249b.mp4"></video><div class="t"><h3>rack_focus</h3></div><p>two characters at different depths: focus moves from the near one to the far one</p><details><summary>settings</summary><pre>{
+sample: scene-05-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; portrait_breath out.mp4 6</code></article></div></section><section><h2>Other effects in the kit</h2><p class="sub">Available for one-off use; not picked by the renderer.</p><div class="g"><article><video muted loop playsinline preload="none" poster="posters/rack_focus-97c9551f0f.jpg" src="clips/rack_focus-97c9551f0f.mp4"></video><div class="t"><h3>rack_focus</h3></div><p>two characters at different depths: focus moves from the near one to the far one</p><details><summary>settings</summary><pre>{
  &quot;depth&quot;: true,
  &quot;parallax&quot;: {
   &quot;zoom&quot;: 0.04
@@ -149,7 +182,7 @@ sample: scene-05-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;
  }
 }
 
-sample: scene-10-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; rack_focus out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/speed_reveal-eed377c5cb.jpg" src="clips/speed_reveal-eed377c5cb.mp4"></video><div class="t"><h3>speed_reveal</h3></div><p>reveals and verdicts: punch-in with manga focus lines, then a calm settle</p><details><summary>settings</summary><pre>{
+sample: scene-10-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; rack_focus out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/speed_reveal-f97683c374.jpg" src="clips/speed_reveal-f97683c374.mp4"></video><div class="t"><h3>speed_reveal</h3></div><p>reveals and verdicts: punch-in with manga focus lines, then a calm settle</p><details><summary>settings</summary><pre>{
  &quot;depth&quot;: true,
  &quot;parallax&quot;: {
   &quot;zoom&quot;: 0.05
@@ -166,7 +199,19 @@ sample: scene-10-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;
  }
 }
 
-sample: scene-06-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; speed_reveal out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/weather_petals-a2439f263e.jpg" src="clips/weather_petals-a2439f263e.mp4"></video><div class="t"><h3>weather_petals</h3><span class="b warn">partial here: lights, particles</span></div><p>weather that sits between the background and the character</p><details><summary>settings</summary><pre>{
+sample: scene-06-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; speed_reveal out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/dolly_zoom-89805eaae1.jpg" src="clips/dolly_zoom-89805eaae1.mp4"></video><div class="t"><h3>dolly_zoom</h3></div><p>the channel&#x27;s preferred move: the subject holds while the room stretches away 2026-10-09: layered (characters cut out from the depth map stay rigid; only the background stretches). The old per-pixel warp made characters &quot;decompose&quot;; &quot;layered&quot;: False brings it back.</p><details><summary>settings</summary><pre>{
+ &quot;depth&quot;: true,
+ &quot;dolly&quot;: {
+  &quot;amount&quot;: 0.3,
+  &quot;layered&quot;: true
+ },
+ &quot;finish&quot;: {
+  &quot;grain&quot;: 0.012,
+  &quot;vignette&quot;: 0.3
+ }
+}
+
+sample: scene-01-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; dolly_zoom out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/weather_petals-88ea6758da.jpg" src="clips/weather_petals-88ea6758da.mp4"></video><div class="t"><h3>weather_petals</h3><span class="b warn">partial here: lights, particles</span></div><p>weather that sits between the background and the character</p><details><summary>settings</summary><pre>{
  &quot;depth&quot;: true,
  &quot;parallax&quot;: {
   &quot;zoom&quot;: 0.05
@@ -181,7 +226,7 @@ sample: scene-06-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;
  }
 }
 
-sample: scene-11-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; weather_petals out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/weather_rain-1fd91b9a94.jpg" src="clips/weather_rain-1fd91b9a94.mp4"></video><div class="t"><h3>weather_rain</h3><span class="b warn">partial here: rain_streaks</span></div><p>(no comment in the kit)</p><details><summary>settings</summary><pre>{
+sample: scene-11-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; weather_petals out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/weather_rain-33b62328d0.jpg" src="clips/weather_rain-33b62328d0.mp4"></video><div class="t"><h3>weather_rain</h3><span class="b warn">partial here: rain_streaks</span></div><p>(no comment in the kit)</p><details><summary>settings</summary><pre>{
  &quot;depth&quot;: true,
  &quot;parallax&quot;: {
   &quot;zoom&quot;: 0.05
@@ -195,7 +240,7 @@ sample: scene-11-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;
  }
 }
 
-sample: scene-06-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; weather_rain out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/freeze_isolate-0c56bdf837.jpg" src="clips/freeze_isolate-0c56bdf837.mp4"></video><div class="t"><h3>freeze_isolate</h3></div><p>&quot;this is the detail that matters&quot;: freeze, colour drains except the subject</p><details><summary>settings</summary><pre>{
+sample: scene-06-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; weather_rain out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/freeze_isolate-54cf4a3130.jpg" src="clips/freeze_isolate-54cf4a3130.mp4"></video><div class="t"><h3>freeze_isolate</h3></div><p>&quot;this is the detail that matters&quot;: freeze, colour drains except the subject</p><details><summary>settings</summary><pre>{
  &quot;depth&quot;: true,
  &quot;parallax&quot;: {
   &quot;zoom&quot;: 0.06
@@ -209,7 +254,7 @@ sample: scene-06-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;
  }
 }
 
-sample: scene-11-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; freeze_isolate out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/glitch-39674ceba7.jpg" src="clips/glitch-39674ceba7.mp4"></video><div class="t"><h3>glitch</h3></div><p>deaths and twists: short corruption bursts</p><details><summary>settings</summary><pre>{
+sample: scene-11-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; freeze_isolate out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/glitch-a7bfdbd7d3.jpg" src="clips/glitch-a7bfdbd7d3.mp4"></video><div class="t"><h3>glitch</h3></div><p>deaths and twists: short corruption bursts</p><details><summary>settings</summary><pre>{
  &quot;depth&quot;: true,
  &quot;parallax&quot;: {
   &quot;zoom&quot;: 0.06
@@ -221,7 +266,7 @@ sample: scene-11-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;
  }
 }
 
-sample: scene-03-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; glitch out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/light_sweep-89b16fc8b0.jpg" src="clips/light_sweep-89b16fc8b0.mp4"></video><div class="t"><h3>light_sweep</h3></div><p>a beam of window or lantern light passes over the scene</p><details><summary>settings</summary><pre>{
+sample: scene-03-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; glitch out.mp4 6</code></article><article><video muted loop playsinline preload="none" poster="posters/light_sweep-257872f11c.jpg" src="clips/light_sweep-257872f11c.mp4"></video><div class="t"><h3>light_sweep</h3></div><p>a beam of window or lantern light passes over the scene</p><details><summary>settings</summary><pre>{
  &quot;depth&quot;: true,
  &quot;parallax&quot;: {
   &quot;zoom&quot;: 0.04
@@ -236,6 +281,6 @@ sample: scene-03-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;
  }
 }
 
-sample: scene-09-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; light_sweep out.mp4 6</code></article></div></section><section><h2>Transitions and layouts</h2><p class="sub">From the same kit.</p><div class="g"><article><video muted loop playsinline preload="none" poster="posters/whip_pan-a8c116c82a.jpg" src="clips/whip_pan-a8c116c82a.mp4"></video><div class="t"><h3>whip_pan</h3></div><p>Two slides joined by a fast whip pan.</p><code>python3 scripts/anime_motion.py transition a.png b.png whip_pan out.mp4</code></article><article><video muted loop playsinline preload="none" poster="posters/ink_bleed-1d93d7797c.jpg" src="clips/ink_bleed-1d93d7797c.mp4"></video><div class="t"><h3>ink_bleed</h3></div><p>Two slides joined by an ink bleed.</p><code>python3 scripts/anime_motion.py transition a.png b.png ink_bleed out.mp4</code></article><article><video muted loop playsinline preload="none" poster="posters/panels-0d0317d258.jpg" src="clips/panels-0d0317d258.mp4"></video><div class="t"><h3>panels</h3></div><p>Manga page: two or three panels slide in one after another.</p><code>python3 scripts/anime_motion.py panels out.mp4 a.png b.png c.png</code></article></div></section><section><h2>COTE &quot;if it was made in 1970&quot; kit</h2><p class="sub">From /mnt/media/bob/cote70s: limited-animation blinks, retro film overlay (grain, scratch, halos, gate weave), burned-in name card.</p><div class="g"><article><video muted loop playsinline preload="none" poster="posters/cote-breath-433fa389ca.jpg" src="clips/cote-breath-433fa389ca.mp4"></video><div class="t"><h3>1970s · breath</h3><span class="b ok">blinks</span><span class="b ok">retro film</span><span class="b ok">name card</span></div><p>Slow 2.5D push with a slight drift (portrait_breath settings). The only move kept in the final COTE video.</p><code>python shot.py &lt;cel.png&gt; breath &lt;seconds&gt; out.mp4 &lt;blink_cel.png&gt; &lt;seed&gt; [caption.png]</code></article><article><video muted loop playsinline preload="none" poster="posters/cote-push-48a20f6dee.jpg" src="clips/cote-push-48a20f6dee.mp4"></video><div class="t"><h3>1970s · push</h3><span class="b ok">blinks</span><span class="b ok">retro film</span></div><p>Stronger depth push-in. Dropped from the COTE video: warps the cel when you look closely.</p><code>python shot.py &lt;cel.png&gt; push &lt;seconds&gt; out.mp4 &lt;blink_cel.png&gt; &lt;seed&gt; [caption.png]</code></article><article><video muted loop playsinline preload="none" poster="posters/cote-drift-bc8fc5bdd2.jpg" src="clips/cote-drift-bc8fc5bdd2.mp4"></video><div class="t"><h3>1970s · drift</h3><span class="b ok">blinks</span><span class="b ok">retro film</span></div><p>Sideways depth parallax. Dropped from the COTE video for the same reason.</p><code>python shot.py &lt;cel.png&gt; drift &lt;seconds&gt; out.mp4 &lt;blink_cel.png&gt; &lt;seed&gt; [caption.png]</code></article><article><video muted loop playsinline preload="none" poster="posters/cote-dolly-6251490e26.jpg" src="clips/cote-dolly-6251490e26.mp4"></video><div class="t"><h3>1970s · dolly</h3><span class="b ok">blinks</span><span class="b ok">retro film</span></div><p>The kit dolly zoom on a cel. Dropped from the COTE video for the same reason.</p><code>python shot.py &lt;cel.png&gt; dolly &lt;seconds&gt; out.mp4 &lt;blink_cel.png&gt; &lt;seed&gt; [caption.png]</code></article><article><video muted loop playsinline preload="none" poster="posters/cote-hold-e4b10e185d.jpg" src="clips/cote-hold-e4b10e185d.mp4"></video><div class="t"><h3>1970s · hold</h3><span class="b ok">blinks</span><span class="b ok">retro film</span></div><p>Almost still. Used for the long final villain shot and the end screen.</p><code>python shot.py &lt;cel.png&gt; hold &lt;seconds&gt; out.mp4 &lt;blink_cel.png&gt; &lt;seed&gt; [caption.png]</code></article></div></section>
+sample: scene-09-1.png</pre></details><code>python3 scripts/anime_motion.py &lt;image&gt; light_sweep out.mp4 6</code></article></div></section><section><h2>Transitions and layouts</h2><p class="sub">From the same kit.</p><div class="g"><article><video muted loop playsinline preload="none" poster="posters/whip_pan-8a4fac2095.jpg" src="clips/whip_pan-8a4fac2095.mp4"></video><div class="t"><h3>whip_pan</h3></div><p>Two slides joined by a fast whip pan.</p><code>python3 scripts/anime_motion.py transition a.png b.png whip_pan out.mp4</code></article><article><video muted loop playsinline preload="none" poster="posters/ink_bleed-f97bfa6f76.jpg" src="clips/ink_bleed-f97bfa6f76.mp4"></video><div class="t"><h3>ink_bleed</h3></div><p>Two slides joined by an ink bleed.</p><code>python3 scripts/anime_motion.py transition a.png b.png ink_bleed out.mp4</code></article><article><video muted loop playsinline preload="none" poster="posters/panels-dad2b319df.jpg" src="clips/panels-dad2b319df.mp4"></video><div class="t"><h3>panels</h3></div><p>Manga page: two or three panels slide in one after another.</p><code>python3 scripts/anime_motion.py panels out.mp4 a.png b.png c.png</code></article></div></section><section><h2>COTE &quot;if it was made in 1970&quot; kit</h2><p class="sub">From /mnt/media/bob/cote70s: limited-animation blinks, retro film overlay (grain, scratch, halos, gate weave), burned-in name card.</p><div class="g"><article><video muted loop playsinline preload="none" poster="posters/cote-breath-433fa389ca.jpg" src="clips/cote-breath-433fa389ca.mp4"></video><div class="t"><h3>1970s · breath</h3><span class="b ok">blinks</span><span class="b ok">retro film</span><span class="b ok">name card</span></div><p>Slow 2.5D push with a slight drift (portrait_breath settings). The only move kept in the final COTE video.</p><code>python shot.py &lt;cel.png&gt; breath &lt;seconds&gt; out.mp4 &lt;blink_cel.png&gt; &lt;seed&gt; [caption.png]</code></article><article><video muted loop playsinline preload="none" poster="posters/cote-push-48a20f6dee.jpg" src="clips/cote-push-48a20f6dee.mp4"></video><div class="t"><h3>1970s · push</h3><span class="b ok">blinks</span><span class="b ok">retro film</span></div><p>Stronger depth push-in. Dropped from the COTE video: warps the cel when you look closely.</p><code>python shot.py &lt;cel.png&gt; push &lt;seconds&gt; out.mp4 &lt;blink_cel.png&gt; &lt;seed&gt; [caption.png]</code></article><article><video muted loop playsinline preload="none" poster="posters/cote-drift-bc8fc5bdd2.jpg" src="clips/cote-drift-bc8fc5bdd2.mp4"></video><div class="t"><h3>1970s · drift</h3><span class="b ok">blinks</span><span class="b ok">retro film</span></div><p>Sideways depth parallax. Dropped from the COTE video for the same reason.</p><code>python shot.py &lt;cel.png&gt; drift &lt;seconds&gt; out.mp4 &lt;blink_cel.png&gt; &lt;seed&gt; [caption.png]</code></article><article><video muted loop playsinline preload="none" poster="posters/cote-dolly-6251490e26.jpg" src="clips/cote-dolly-6251490e26.mp4"></video><div class="t"><h3>1970s · dolly</h3><span class="b ok">blinks</span><span class="b ok">retro film</span></div><p>The kit dolly zoom on a cel. Dropped from the COTE video for the same reason.</p><code>python shot.py &lt;cel.png&gt; dolly &lt;seconds&gt; out.mp4 &lt;blink_cel.png&gt; &lt;seed&gt; [caption.png]</code></article><article><video muted loop playsinline preload="none" poster="posters/cote-hold-e4b10e185d.jpg" src="clips/cote-hold-e4b10e185d.mp4"></video><div class="t"><h3>1970s · hold</h3><span class="b ok">blinks</span><span class="b ok">retro film</span></div><p>Almost still. Used for the long final villain shot and the end screen.</p><code>python shot.py &lt;cel.png&gt; hold &lt;seconds&gt; out.mp4 &lt;blink_cel.png&gt; &lt;seed&gt; [caption.png]</code></article></div></section>
 <script>const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.play().catch(()=>{})}else v.pause()}),{threshold:.3});
 document.querySelectorAll('video').forEach(v=>io.observe(v));</script></body></html>
